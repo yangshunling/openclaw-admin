@@ -1,0 +1,22 @@
+/* Gateway 页面样式 */
+@import '../styles/theme.css';
+
+.gateway-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacing-md); margin-bottom: var(--spacing-lg); }
+.stat-card { display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-lg); background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); }
+.stat-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--color-bg-tertiary); border-radius: var(--radius-md); color: var(--color-accent); font-size: 20px; }
+.stat-content { display: flex; flex-direction: column; gap: 2px; }
+.stat-value { font-size: 18px; font-weight: 600; font-family: var(--font-mono); }
+.stat-value.success { color: var(--color-success); }
+.stat-value.warning { color: var(--color-warning); }
+.stat-value.countdown { font-size: 16px; }
+.stat-label { font-size: 13px; color: var(--color-text-muted); }
+
+.gateway-process-card { background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: var(--spacing-lg); margin-bottom: var(--spacing-md); }
+.gateway-process-header { display: flex; align-items: center; gap: var(--spacing-md); }
+.gateway-process-icon { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: var(--radius-md); font-size: 20px; }
+.gateway-process-icon.running { background: rgba(0, 255, 136, 0.1); color: var(--color-success); }
+.gateway-process-info { flex: 1; }
+.gateway-process-info h4 { margin: 0; font-size: 16px; font-weight: 500; }
+.gateway-process-meta { font-size: 13px; color: var(--color-text-muted); font-family: var(--font-mono); }
+.gateway-process-status { font-size: 12px; padding: 4px 10px; border-radius: var(--radius-sm); font-weight: 600; }
+.gateway-process-status.running { background: rgba(0, 255, 136, 0.1); color: var(--color-success); }

@@ -1,0 +1,11 @@
+/* Config 页面样式 */
+@import '../styles/theme.css';
+
+.config-container { margin-bottom: var(--spacing-lg); }
+.config-info { margin-bottom: var(--spacing-md); }
+.editor-container { display: flex; flex-direction: column; background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden; height: calc(100vh - 220px); }
+.editor-header { display: flex; justify-content: space-between; align-items: center; padding: var(--spacing-md) var(--spacing-lg); background: var(--color-bg-secondary); border-bottom: 1px solid var(--color-border); font-size: 14px; font-weight: 500; }
+.code-editor { flex: 1; width: 100%; padding: var(--spacing-lg); background: var(--color-bg-primary); border: none; outline: none; color: var(--color-text-primary); font-family: var(--font-mono); font-size: 14px; line-height: 1.6; resize: none; }
+.code-editor:focus { background: var(--color-bg-tertiary); }
+.code-editor[readonly] { background: var(--color-bg-secondary); cursor: not-allowed; opacity: 0.7; }
+.toast-success { position: fixed; bottom: var(--spacing-xl); right: var(--spacing-xl); padding: var(--spacing-md) var(--spacing-lg); background: var(--color-success); color: var(--color-bg-primary); border-radius: var(--radius-md); font-size: 14px; font-weight: 500; animation: fadeIn 0.3s; box-shadow: 0 4px 20px rgba(0, 255, 136, 0.3); }

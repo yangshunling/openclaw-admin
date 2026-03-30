@@ -1,0 +1,4 @@
+/* Dashboard 页面样式 */
+@import '../styles/theme.css';
+
+.section { margin-bottom: var(--spacing-xl); }
