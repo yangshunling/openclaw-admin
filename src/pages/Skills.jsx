@@ -7,26 +7,26 @@ import './Skills.css'
 export default function Skills() {
   const { data: skills = [], loading, reload } = useSkills()
   const [search, setSearch] = useState('')
-  const [filter, setFilter] = useState('全部')
-
-  const filters = ['全部', '已启用', '已禁用']
-
-  const skillsList = skills || []
-  const filtered = skillsList.filter(s => {
-    const match = s.name.toLowerCase().includes(search.toLowerCase())
-    if (filter === '已启用') return match && s.enabled
-    if (filter === '已禁用') return match && !s.enabled
-    return match
-  })
 
   if (loading) return <Loading />
 
+  const skillsList = Array.isArray(skills) ? skills : []
+
+  const filtered = skillsList.filter(s => {
+    const searchLower = search.toLowerCase()
+    return (
+      s.name?.toLowerCase().includes(searchLower) ||
+      s.description?.toLowerCase().includes(searchLower)
+    )
+  })
+
   return (
     <div className="fade-in">
-      <div className="section-header">
+      <div className="section-header mb-lg">
         <div className="section-title-group">
           <Wrench size={22} className="section-icon" />
-          <h2 className="section-title">Skills</h2>
+          <h2 className="section-title">Skills技能</h2>
+          {skillsList.length > 0 && <span className="timeline-badge success">{skillsList.length} 个技能</span>}
         </div>
         <div className="section-actions">
           <div className="search-box">
@@ -41,17 +41,15 @@ export default function Skills() {
 
       <div className="grid-auto">
         {filtered.map(skill => (
-          <div key={skill.name} className={'card ' + (skill.enabled ? '' : 'card-disabled')}>
-            <div className="flex-between mb-sm">
-              <h3 className="text-accent font-mono">{skill.name}</h3>
-              <span className="badge-gray">v{skill.version || '1.0.0'}</span>
-            </div>
-            <p className="text-muted text-sm mb-md">{skill.description || '自定义技能'}</p>
+          <div key={skill.name} className="card">
+            <h3 className="text-accent font-mono skill-name">{skill.name}</h3>
+            <p className="text-muted text-sm skill-description">{skill.description || '自定义技能'}</p>
+            <span className="skill-version">v{skill.version || '1.0.0'}</span>
           </div>
         ))}
       </div>
 
-      <div className="footer-stats">共 {skills.length} 个 Skills</div>
+      <div className="footer-stats">共 {skillsList.length} 个 Skills</div>
     </div>
   )
 }

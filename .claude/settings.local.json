@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -v --connect-timeout 15 \"https://mcpmarket.cn/mcp/48e06aed8ef34bd0aac901a2?client=trae\")"
+    ]
+  }
+}

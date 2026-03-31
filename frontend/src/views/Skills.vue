@@ -1,7 +1,12 @@
 <template>
   <div class="page-container">
     <div class="page-header">
-      <h1 class="page-title">Skills 管理</h1>
+      <h1 class="page-title">
+        <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+        Skills 管理
+      </h1>
       <p class="page-subtitle">查看和管理所有已安装的技能</p>
     </div>
 

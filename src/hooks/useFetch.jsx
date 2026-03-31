@@ -47,15 +47,21 @@ export function useCacheFetch(key, fetcher) {
 
   const getCache = context?.getCache || (() => null)
   const setCache = context?.setCache || (() => {})
+  const clearCache = context?.clearCache || (() => {})
 
-  const fetchData = useCallback(async () => {
-    const cached = getCache(key)
-    if (cached !== null) {
-      setData(cached)
-      setLoading(false)
-      return
+  const fetchData = useCallback(async (force = false) => {
+    // reload 时强制刷新，不使用缓存
+    if (!force) {
+      const cached = getCache(key)
+      if (cached !== null) {
+        setData(cached)
+        setLoading(false)
+        return
+      }
     }
 
+    // 清除缓存并重新获取
+    clearCache(key)
     setLoading(true)
     try {
       const result = await fetcher()
@@ -66,13 +72,13 @@ export function useCacheFetch(key, fetcher) {
     } finally {
       setLoading(false)
     }
-  }, [key, fetcher, getCache, setCache])
+  }, [key, fetcher, getCache, setCache, clearCache])
 
   useEffect(() => {
     fetchData()
   }, [fetchData])
 
-  return { data, loading, error, reload: fetchData }
+  return { data, loading, error, reload: () => fetchData(true) }
 }
 
 export function useConfig() {
@@ -101,6 +107,10 @@ export function useStatus(refreshInterval = 2000) {
 
 export function useSkills() {
   return useCacheFetch('skills', () => fetch('/api/skills').then(r => r.json()))
+}
+
+export function useMcp() {
+  return useCacheFetch('mcp', () => fetch('/api/mcp').then(r => r.json()))
 }
 
 export function useGateway() {

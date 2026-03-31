@@ -1,4 +1,20 @@
 /* Plugins 页面样式 */
 @import '../styles/theme.css';
 
+.plugin-card { position: relative; }
+.plugin-card.enabled .status-dot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+
+.plugin-card .plugin-version {
+  position: absolute;
+  bottom: var(--spacing-md);
+  right: var(--spacing-md);
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+}
+
 .plugin-icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; font-size: 28px; background: var(--color-bg-tertiary); border-radius: var(--radius-md); }

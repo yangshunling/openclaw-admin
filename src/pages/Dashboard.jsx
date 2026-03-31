@@ -22,7 +22,14 @@ export default function Dashboard() {
 
   return (
     <div className="fade-in">
-      <div className="grid-4">
+      <section className="section">
+        <div className="section-header">
+          <div className="section-title-group">
+            <Zap size={20} className="section-icon" />
+            <h2 className="section-title">基本信息</h2>
+          </div>
+        </div>
+        <div className="grid-4">
         <div className="card flex-center gap-md">
           <div className="icon-box accent"><Zap size={24} /></div>
           <div><div className="text-muted text-sm">版本</div><div className="text-lg font-mono">v{version}</div></div>
@@ -40,6 +47,7 @@ export default function Dashboard() {
           <div><div className="text-muted text-sm">通道数</div><div className="text-lg font-mono">{channelsCount}</div></div>
         </div>
       </div>
+      </section>
 
       <section className="section">
         <div className="section-header">

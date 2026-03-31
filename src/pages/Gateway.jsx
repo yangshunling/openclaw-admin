@@ -1,7 +1,7 @@
-import { GitBranch } from 'lucide-react'
+import { GitBranch, FileText } from 'lucide-react'
 import { Loading } from '../components/ui/Loading'
 import { useGateway } from '../hooks/useFetch'
-import { formatTime, formatCountdown } from '../utils/format'
+import { formatTime, formatCountdown, formatDateTime } from '../utils/format'
 import './Gateway.css'
 
 export default function Gateway() {
@@ -33,7 +33,7 @@ export default function Gateway() {
         <div className="stat-card">
           <div className="stat-icon">●</div>
           <div className="stat-content">
-            <span className="stat-value">{formatTime(gatewayStatus?.lastCheck)}</span>
+            <span className="stat-value">{formatDateTime(gatewayStatus?.lastCheckTime) || '-'}</span>
             <span className="stat-label">最后检测</span>
           </div>
         </div>
@@ -65,6 +65,28 @@ export default function Gateway() {
           </div>
         </div>
       ))}
+
+      <section className="section">
+        <div className="section-header">
+          <div className="section-title-group">
+            <FileText size={20} className="section-icon" />
+            <h2 className="section-title">检测执行日志</h2>
+          </div>
+        </div>
+        <div className="log-container">
+          {logs.length === 0 ? (
+            <div className="text-muted text-center" style={{ padding: '20px' }}>暂无日志</div>
+          ) : (
+            logs.slice(0, 50).map((log, index) => (
+              <div key={index} className="log-item">
+                <span className="log-time">{formatDateTime(log.timestamp)}</span>
+                <span className={`log-level ${log.level || 'info'}`}>{log.level || 'INFO'}</span>
+                <span className="log-message">{log.message}</span>
+              </div>
+            ))
+          )}
+        </div>
+      </section>
     </div>
   )
 }

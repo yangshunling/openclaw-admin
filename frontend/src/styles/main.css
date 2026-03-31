@@ -29,9 +29,9 @@
   --color-border: #2a3a4d;
   --color-divider: rgba(0, 212, 255, 0.1);
 
-  /* Typography */
-  --font-display: 'Orbitron', sans-serif;
-  --font-body: 'Rajdhani', sans-serif;
+  /* Typography - 使用阿里妈妈数黑体 */
+  --font-display: '阿里妈妈数黑体', 'AlimamaShuHei', 'Noto Sans SC', sans-serif;
+  --font-body: '阿里妈妈数黑体', 'AlimamaShuHei', 'Noto Sans SC', sans-serif;
   --font-mono: 'Fira Code', monospace;
 
   /* Spacing */
@@ -321,15 +321,68 @@ body::before {
 
 .page-header {
   margin-bottom: var(--spacing-xl);
+  padding-top: var(--spacing-md);
 }
 
 .page-title {
   font-family: var(--font-display);
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--color-text-primary);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.page-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  margin-top: 0;
+}
+
+.title-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--color-accent-primary);
+}
+
+/* Card Title */
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.card-title-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.card:nth-child(1) .card-title {
+  color: var(--color-accent-primary);
+}
+
+.card:nth-child(2) .card-title {
+  color: var(--color-accent-secondary);
+}
+
+/* Quick Links */
+.quick-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.quick-link:hover {
+  color: var(--color-accent-primary);
 }
 
 .page-subtitle {

@@ -8,3 +8,14 @@
 .footer-stats { text-align: center; padding-top: var(--spacing-md); font-size: 13px; color: var(--color-text-muted); font-family: var(--font-mono); }
 .empty-state { text-align: center; padding: var(--spacing-xl); color: var(--color-text-muted); }
 .empty-state p { font-size: 16px; margin-bottom: var(--spacing-sm); }
+
+/* MCP 自定义服务卡片 */
+.mcp-card { position: relative; }
+.mcp-card .status-dot {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+}
+.mcp-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--spacing-sm); }
+.mcp-card-header h3 { margin: 0; }
+.mcp-card-footer { display: flex; align-items: center; justify-content: space-between; }

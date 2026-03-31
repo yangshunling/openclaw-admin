@@ -1,6 +1,5 @@
-import { Outlet, NavLink, useLocation } from 'react-router-dom'
-import { useState } from 'react'
-import { LayoutDashboard, Globe, MessageSquare, Settings, Wrench, Server, Puzzle, Search } from 'lucide-react'
+import { NavLink, useLocation } from 'react-router-dom'
+import { LayoutDashboard, Globe, MessageSquare, Settings, Wrench, Server, Puzzle } from 'lucide-react'
 import './Layout.css'
 
 const navItems = [
@@ -13,8 +12,7 @@ const navItems = [
   { path: '/plugins', icon: Puzzle, label: '插件管理' },
 ]
 
-export default function Layout() {
-  const [search, setSearch] = useState('')
+export default function Layout({ children }) {
   const location = useLocation()
 
   const currentPage = navItems.find(i => i.path === location.pathname)?.label || '概览'
@@ -38,11 +36,10 @@ export default function Layout() {
         <header className="top-bar">
           <h1 className="page-title">{currentPage}</h1>
           <div className="top-bar-actions">
-            <div className="search-box"><Search size={18} /><input type="text" placeholder="搜索..." value={search} onChange={e => setSearch(e.target.value)} /></div>
             <div className="status-badge"><span className="status-dot"></span>运行中</div>
           </div>
         </header>
-        <div className="content-area"><Outlet /></div>
+        <div className="content-area">{children}</div>
       </main>
     </div>
   )

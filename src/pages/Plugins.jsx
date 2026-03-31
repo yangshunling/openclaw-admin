@@ -39,12 +39,13 @@ export default function Plugins() {
 
       <div className="grid-auto">
         {filtered.map(plugin => (
-          <div key={plugin.id} className={'card ' + (plugin.enabled ? 'enabled' : 'disabled')}>
+          <div key={plugin.id} className={'card plugin-card ' + (plugin.enabled ? 'enabled' : 'disabled')}>
+            {plugin.enabled && <div className="status-dot"></div>}
             <div className="flex-center gap-md mb-md">
               <div className="plugin-icon">P</div>
-              <div><h3>{plugin.name}</h3><div className="text-muted text-sm">v{plugin.version}</div></div>
+              <div><h3>{plugin.name}</h3></div>
             </div>
-            <span className={'badge ' + (plugin.enabled ? 'badge-success' : 'badge-muted')}>{plugin.enabled ? '运行中' : '已停止'}</span>
+            <span className="plugin-version">v{plugin.version}</span>
           </div>
         ))}
       </div>

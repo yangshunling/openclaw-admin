@@ -104,10 +104,13 @@ const mockData = {
     }
   ],
   mcpServers: [
+    // 内置工具 (没有 command 字段)
     {
       id: 'filesystem',
       name: 'Filesystem',
       type: 'filesystem',
+      description: '文件系统读写和管理',
+      category: '工具',
       status: 'active',
       config: {
         allowedDirectories: ['C:/Users/yangsl25774/.openclaw/workspace-ceo']
@@ -117,10 +120,29 @@ const mockData = {
       id: 'brave-search',
       name: 'Brave Search',
       type: 'search',
+      description: 'Web搜索功能',
+      category: '搜索',
       status: 'active',
       config: {
         apiKey: '***'
       }
+    },
+    {
+      id: 'git',
+      name: 'Git',
+      type: 'vcs',
+      description: 'Git版本控制操作',
+      category: '工具',
+      status: 'active'
+    },
+    // 自定义服务 (有 command 字段)
+    {
+      id: 'custom-server-1',
+      name: 'My Custom MCP',
+      description: '我自己的 MCP 服务',
+      command: 'npx @myorg/mcp-server',
+      running: true,
+      type: 'custom'
     }
   ],
   gateway: {
@@ -200,7 +222,12 @@ app.get('/api/plugins', (req, res) => {
 });
 
 app.get('/api/mcp', (req, res) => {
-  res.json(mockData.mcpServers);
+  // 返回前端期望的格式：{ builtin, custom }
+  // builtin: 内置工具(无command字段), custom: 自定义服务(有command字段)
+  res.json({
+    builtin: mockData.mcpServers.filter(s => s.type === 'builtin' || !s.command),
+    custom: mockData.mcpServers.filter(s => s.command)
+  });
 });
 
 app.get('/api/gateway/status', (req, res) => {

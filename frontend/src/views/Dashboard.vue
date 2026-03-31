@@ -1,7 +1,15 @@
 <template>
   <div class="page-container">
     <div class="page-header">
-      <h1 class="page-title">概览 Dashboard</h1>
+      <h1 class="page-title">
+        <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        概览 Dashboard
+      </h1>
       <p class="page-subtitle">OpenClaw 系统状态总览</p>
     </div>
 
@@ -30,7 +38,12 @@
     <!-- Quick Info -->
     <div class="card-grid">
       <div class="card">
-        <h3 style="font-family: var(--font-display); margin-bottom: var(--spacing-md); color: var(--color-accent-primary);">
+        <h3 class="card-title">
+          <svg class="card-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="16" x2="12" y2="12"/>
+            <line x1="12" y1="8" x2="12.01" y2="8"/>
+          </svg>
           系统信息
         </h3>
         <div style="color: var(--color-text-secondary); line-height: 2;">
@@ -40,17 +53,21 @@
         </div>
       </div>
       <div class="card">
-        <h3 style="font-family: var(--font-display); margin-bottom: var(--spacing-md); color: var(--color-accent-secondary);">
+        <h3 class="card-title">
+          <svg class="card-title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
           快速链接
         </h3>
         <div style="display: flex; flex-direction: column; gap: var(--spacing-sm);">
-          <router-link to="/skills" style="color: var(--color-text-secondary); text-decoration: none; hover: color: var(--color-accent-primary);">
+          <router-link to="/skills" class="quick-link">
             → 查看所有 Skills
           </router-link>
-          <router-link to="/gateway" style="color: var(--color-text-secondary); text-decoration: none;">
+          <router-link to="/gateway" class="quick-link">
             → 网关设置
           </router-link>
-          <router-link to="/sessions" style="color: var(--color-text-secondary); text-decoration: none;">
+          <router-link to="/sessions" class="quick-link">
             → 活动会话
           </router-link>
         </div>
